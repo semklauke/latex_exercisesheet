@@ -1,0 +1,55 @@
+\documentclass[
+    11pt,
+    indent=0pt,
+    style=underline,
+    pointtable,
+    exercisepoints,
+    exerciseindent=2em,
+    tikz=no,
+    displaydate=yes,
+    exercisename=Exercise,
+    worksheetname=Worksheet,
+    tutorialname=Tutorial,
+    groupname=Group,
+]{../template/exercisesheet}
+
+\sheet{2}
+\class{Linear Algebra}
+\group{210}
+\tutorial{A}
+\semester{WS 22/23}
+
+\member{123456}{Albert}{Einstein}
+\member{234567}{Richard}{Feynman}
+\member{345678}{Alan}{Turing}
+\member{456789}{David}{Hilbert}
+
+
+\date{3. November 1971}
+\begin{document}
+
+% exercises go here
+\begin{exercise}[4]
+    \begin{subexercise}
+        Subexercise 1
+    \end{subexercise}
+    \begin{subexercise}
+        Subexercise 2
+    \end{subexercise}
+\end{exercise}
+% exercises go here
+\begin{exercise}[6]
+    \begin{subexercise}
+        Subexercise 1
+    \end{subexercise}
+    \begin{subexercise*}
+        Subexercise 2
+    \end{subexercise*}
+\end{exercise}
+
+\task{8}
+\textbackslash{}task instead of \textbackslash{}begin\{exercise\}
+\subtask{} subtask with linebreak
+\Subtask{} also without
+
+\end{document}
