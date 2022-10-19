@@ -36,6 +36,10 @@
 \newcommand{\exshExercisePoints}{no}
 \DeclareOptionX{exercisepoints}{\renewcommand{\exshExercisePoints}{yes}}
 % ****(OPTION)****
+% exerciseprefix [DEFAULT: Ex] 
+\newcommand{\exshExercisePrefix}{Ex}
+\DeclareOptionX{exerciseprefix}{\renewcommand{\exshExercisePrefix}{#1}}
+% ****(OPTION)****
 % exerciseindent [none|length unit] [DEFAULT: 2em] 
 \newcommand{\exshExerciseIndent}{2em}
 \DeclareOptionX{exerciseindent}{\renewcommand{\exshExerciseIndent}{#1}}
@@ -218,7 +222,7 @@
 % \addPT{exercise nr.}{points}
 % ==================================
 \newcommand{\addPT}[2]{%
-    \edef\tempA{\##1 &}
+    \edef\tempA{\exshExercisePrefix{}#1 &}
     \edef\tempB{\qquad/#2 &}
     \expandafter\gappto\expandafter\PTableA\expandafter{\tempA}%  add to table header 
     \expandafter\gappto\expandafter\PTableB\expandafter{\tempB}% add points space to table
