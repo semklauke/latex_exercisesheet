@@ -208,8 +208,8 @@
 \newcommand{\semester}[1]{%
     \renewcommand{\printsemester}{#1}%
 }
-% include file with settins for this class 
-\input{../template/settings}
+% include file with settins for this class
+\IfFileExists{../template/settings.tex}{\input{../template/settings}}{}
 %% --------------------------------------------------- %%
 %% -------------- Exercise Points Logic -------------- %%
 %% --------------------------------------------------- %%
@@ -507,4 +507,4 @@
 %% --------------------------------------------------- %%
 %% --------------- Custome Definitions --------------- %%
 %% --------------------------------------------------- %%
-\input{../template/custome_definitions}
+\IfFileExists{../template/custome_definitions.tex}{\input{../template/custome_definitions}}{}
