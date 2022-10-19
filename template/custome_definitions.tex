@@ -1,0 +1,88 @@
+% --- Delimiter ---
+% Set {}
+% \newcommand{\set}[1]{\ensuremath{\mathopen{}\left\{#1\right\}\mathclose{}}}
+\DeclarePairedDelimiter\set{\{}{\}}%
+\makeatletter
+\let\oldset\set
+\def\set{\@ifstar{\oldset}{\oldset*}}
+\makeatother
+% Interpretation 
+% \newcommand{\interpret}[1]{\ensuremath{\mathopen{}\left\llbracket #1 \right\rrbracket\mathclose{}}}
+\DeclarePairedDelimiter\interpret{\llbracke}{\rrbracket}%
+\makeatletter
+\let\oldinterpret\interpret
+\def\set{\@ifstar{\oldinterpret}{\oldinterpret*}}
+\makeatother
+% abs + norm value ||
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}%
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}%
+\makeatletter
+\let\oldabs\abs
+\def\abs{\@ifstar{\oldabs}{\oldabs*}}
+%
+\let\oldnorm\norm
+\def\norm{\@ifstar{\oldnorm}{\oldnorm*}}
+\makeatother
+% sytem <>
+\DeclarePairedDelimiter\ezs{\langle}{\rangle}
+\makeatletter
+\let\oldezs\ezs
+\def\ezs{\@ifstar{\oldezs}{\oldezs*}}
+\makeatother
+
+% --- Spacing ---
+\newcommand{\sep}{\ensuremath{,\;}}
+
+% --- Number sets ---
+\newcommand{\R}{\ensuremath{\mathbb{R}}}
+\newcommand{\N}{\ensuremath{\mathbb{N}}}
+\newcommand{\Z}{\ensuremath{\mathbb{Z}}}
+\newcommand{\Q}{\ensuremath{\mathbb{Q}}}
+\newcommand{\CC}{\ensuremath{\mathbb{C}}}
+\newcommand{\F}{\ensuremath{\mathbb{F}}}
+\newcommand{\Prime}{\ensuremath{\mathbb{P}}}
+
+% --- logic operators ---
+\DeclareMathOperator{\xor}{\oplus}
+\DeclareMathOperator{\impl}{\rightarrow}
+
+% --- greek letters ---
+\renewcommand{\phi}{\ensuremath{\varphi}}
+\renewcommand{\theta}{\ensuremath{\vartheta}}
+\NewCommandCopy{\oldpsi}{\psi}
+\renewcommand{\psi}{\ensuremath{\oldpsi}}
+
+% --- Operators ---
+\DeclareMathOperator{\id}{id}
+% for gaussion transition arrows
+\newcommand{\gaussto}[1]{\ensuremath{\overset{\substack{#1}}{\leadsto}}}
+\newcommand{\gaussadd}[2]{\ensuremath{\alpha_{#1}(#2)}}
+\newcommand{\gaussmult}[2]{\ensuremath{\mu_{#1}(#2)}}
+\newcommand{\gaussswitch}[1]{\ensuremath{\tau_{#1}}}
+\newcommand{\Bild}{\ensuremath{\mathrm{Bild} \ }}
+\newcommand{\Kern}{\ensuremath{\mathrm{Kern} \ }}
+\newcommand{\Rg}{\ensuremath{\mathrm{Rg} \ }}
+\newcommand{\Def}{\ensuremath{\mathrm{Def} \ }}
+\newcommand{\abb}[1]{\ensuremath{\mathrm{Abb}(#1)}}
+% gcd to ggT if german
+% \let\gcd\relax
+% \DeclareMathOperator{\gcd}{ggT}%
+
+% ---  MATRIX and VECTORS ---
+\newcommand{\vecIII}[3]{\ensuremath{\begin{pmatrix}[c] #1 \\ #2 \\ #3 \end{pmatrix}}}
+\newcommand{\vecIIIT}[3]{\ensuremath{(#1 \  #2 \  #3)}}
+\newcommand{\matIV}[4]{\ensuremath{\begin{pmatrix}[cc] #1 & #2 \\ #3 & #4 \end{pmatrix}}}
+% add custom column too matrix enviorments
+\makeatletter
+\renewcommand*\env@matrix[1][*\c@MaxMatrixCols c]{%
+  \hskip -\arraycolsep
+  \let\@ifnextchar\new@ifnextchar
+  \array{#1}}
+\makeatother
+
+% --- Other ---
+\newcommand{\yields}{\ensuremath{\mathrel{\Rightarrow}}}
+%\renewcommand{\iff}{\xLeftrightarrow{}}
+\newcommand{\todo}[1][]{{\color{red}TODO% 
+        \ifx #1\empty\else: #1\fi%
+}}
