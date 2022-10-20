@@ -6,8 +6,7 @@ This is a latex class / template for university or school exercisesheets.<br />
 You can find an example in `example/example.tex`.
 
 ### The example in style underline and open
-<img src="https://stuff.semklauke.de/latex_exercisesheet_example.png" width="500" >
-<img src="https://stuff.semklauke.de/latex_exercisesheet_example2.png" width="500" >
+<img src="https://stuff.semklauke.de/latex_exercisesheet_example.png" width="400" >   <img src="https://stuff.semklauke.de/latex_exercisesheet_example2.png" width="400" >
 
 ## Usage
 - You can see the most basic usage in `example/example.tex`
