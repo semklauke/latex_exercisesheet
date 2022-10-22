@@ -137,6 +137,7 @@
 \RequirePackage{latexsym}
 \RequirePackage{enumitem}
 \RequirePackage{xcolor}
+\RequirePackage{colortbl}
 %% --------------------------------------------------- %%
 %% -------------------- Counters --------------------- %%
 %% --------------------------------------------------- %%
@@ -144,6 +145,8 @@
 \newtotcounter{exercisenumber}
 \newtotcounter{subexercisenumber}
 \newtotcounter{subsubexercisenumber}
+\newtotcounter{exercisewithpoints}
+\setcounter{exercisewithpoints}{0}
 % Counter for task 
 %\newtotcounter{tasknumber}
 %\newtotcounter{subtasknumber}
@@ -226,7 +229,8 @@
     \edef\tempB{\qquad/#2 &}
     \expandafter\gappto\expandafter\PTableA\expandafter{\tempA}%  add to table header 
     \expandafter\gappto\expandafter\PTableB\expandafter{\tempB}% add points space to table
-    \expandafter\gappto\expandafter\PTHead\expandafter{c | }% add to tabular def
+    %\expandafter\gappto\expandafter\PTHead\expandafter{c | }% add to tabular def
+    \stepcounter{exercisewithpoints} % count exercises for tabular def
 }
 % display the Point table with \pointtable
 \newcommand{\pointtable}{%
@@ -234,7 +238,7 @@
     \begin{center}
     % check if racecondition works out 
     \ifcsname PTableASaved\endcsname
-        \begin{tabular}{|\PTHeadSaved c |}
+        \begin{tabular}{| *{\PTHeadSaved}{c|} c|}
             \hline
             \PTableASaved $\Sigma$ \\ \hline
             \PTableBSaved \qquad / \totalpointsSaved \\
@@ -252,7 +256,8 @@
         \makeatletter
         \immediate\write\@mainaux{\string\gdef\string\PTableASaved{\PTableA}}%
         \immediate\write\@mainaux{\string\gdef\string\PTableBSaved{\PTableB}}%
-        \immediate\write\@mainaux{\string\gdef\string\PTHeadSaved{\PTHead}}%
+        %\immediate\write\@mainaux{\string\gdef\string\PTHeadSaved{\PTHead}}%
+        \immediate\write\@mainaux{\string\gdef\string\PTHeadSaved{\arabic{exercisewithpoints}}}%
         \FPround\totalpoints\totalpoints{1}%
         \immediate\write\@mainaux{\string\gdef\string\totalpointsSaved{\FPprint{\totalpoints}}}%
         \makeatother
@@ -271,12 +276,20 @@
 \ifoot*{\pagemark}
 \setlength{\fboxrule}{0.4pt}
 \setlength{\fboxsep}{4pt}
+% load some common stuff at the \begin{document}
 \AtBeginDocument[A]{%
+    % if we have colortbl loaded we need to insert this hack, 
+    % cause colortbl waits for some packages to load
+    % https://tex.stackexchange.com/questions/212632/problem-to-store-tabulars-in-boxes-in-the-preamble-when-colortbl-is-loaded
+    \@ifpackageloaded{colortbl}{%
+        \expandafter\def\expandafter\@tabarray\expandafter{%
+        \expandafter\CT@start\@tabarray}%
+    }{}%
     \pagenumbering{arabic}%
     % insert pdf information
     \hypersetup{
-        pdftitle = {\Worksheet{} \printsheet{}},
-        pdfauthor = {\Group{} \printgroup{}},
+        pdftitle = {\Worksheet{} \printsheet{}, \Group{} \printgroup{}},
+        pdfauthor = {\pdfmembers{}},
         pdfsubject = {\printclass{} \printsemester{}}
     }%
 }

@@ -11,7 +11,7 @@
 \DeclarePairedDelimiter\interpret{\llbracke}{\rrbracket}%
 \makeatletter
 \let\oldinterpret\interpret
-\def\set{\@ifstar{\oldinterpret}{\oldinterpret*}}
+\def\interpret{\@ifstar{\oldinterpret}{\oldinterpret*}}
 \makeatother
 % abs + norm value ||
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}%
