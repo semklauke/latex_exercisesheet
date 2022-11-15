@@ -49,21 +49,22 @@ But feel free to edit the class file to your like, I tried to comment everything
 ### Class Options
 The base class is `scrartcl`
 
-| Option           | Possible Values   | Default    | Description                                                                  |
-|:-----------------|:------------------|:-----------|:-----------------------------------------------------------------------------|
-| `10pt`           | -                 | -          | Pass 10pt font size to  `scrartcl`                                           |
-| `11pt`           | -                 | -          | Pass 11t font size to  `scrartcl`                                            |
-| `indent`         | *length units*    | 0pt        | Indentation of new paragraph (sets `parindent`)                              |
-| `style`          | underline \| open | underline  | Select one of 2 header styles                                                |
-| `pointtable`     | -                 | *disabled* | Display all exercise points in a table under the header (see Exercisepoints) |
-| `exercisepoints` | -                 | *disabled* | Display points box after each exercise envi. (see Exercisepoits)             | 
-| `exerciseindent` | *length units*    | 2em        | Indentation of a subexercise relative to the exercise                        |
-| `exerciseprefix` | *strings*         | Ex         | Prefix for the pointtable heading                                            |
-| `tikz`           | yes \| no         | no         | include usefull tikz packages and libraries                                  |
-| `displaydate`    | yes \| no         | yes        | whether to display the date in the header                                    |
-| `exercisename`   | *strings*         | Exercise   | Heading for each new exercise                                                |
-| `worksheetname`  | *strings*         | Worksheets | What your class calls a Worksheet (eg. Exercisesheet, other languages, etc.) |
-| `tutorialname`   | *strings*         | Tutorial   | What your class calls a Tutorial                                             |
-| `groupname`      | *strings*         | Group      | What your class calls a Group                                                |
+| Option              | Possible Values   | Default    | Description                                                                  |
+|:--------------------|:------------------|:-----------|:-----------------------------------------------------------------------------|
+| `10pt`              | -                 | -          | Pass 10pt font size to  `scrartcl`                                           |
+| `11pt`              | -                 | -          | Pass 11t font size to  `scrartcl`                                            |
+| `indent`            | *length units*    | 0pt        | Indentation of new paragraph (sets `parindent`)                              |
+| `style`             | underline \| open | underline  | Select one of 2 header styles                                                |
+| `pointtable`        | -                 | *disabled* | Display all exercise points in a table under the header (see Exercisepoints) |
+| `exercisepoints`    | -                 | *disabled* | Display points box after each exercise envi. (see Exercisepoits)             | 
+| `exerciseindent`    | *length units*    | 2em        | Indentation of a subexercise relative to the exercise                        |
+| `exerciseprefix`    | *strings*         | Ex         | Prefix for the pointtable heading                                            |
+| `tikz`              | yes \| no         | no         | include usefull tikz packages and libraries                                  |
+| `displaydate`       | yes \| no         | yes        | whether to display the date in the header                                    |
+| `sheetnumberprefix` | -                 | *disabled* | add worksheet number as prefix for the ex.nr. : Ex 1 -> Ex 3.1 (on sheet 3)  |
+| `exercisename`      | *strings*         | Exercise   | Heading for each new exercise                                                |
+| `worksheetname`     | *strings*         | Worksheets | What your class calls a Worksheet (eg. Exercisesheet, other languages, etc.) |
+| `tutorialname`      | *strings*         | Tutorial   | What your class calls a Tutorial                                             |
+| `groupname`         | *strings*         | Group      | What your class calls a Group                                                |
 
 \- means this options has no values, just pass it 

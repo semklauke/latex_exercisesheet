@@ -29,7 +29,18 @@
 \let\oldezs\ezs
 \def\ezs{\@ifstar{\oldezs}{\oldezs*}}
 \makeatother
-
+% ceiling
+\DeclarePairedDelimiter{\ceil}{\lceil}{\rceil}
+\makeatletter
+\let\oldceil\ceil
+\def\ceil{\@ifstar{\oldceil}{\oldceil*}}
+\makeatother
+% floor 
+\DeclarePairedDelimiter{\floor}{\lfloor}{\rfloor}
+\makeatletter
+\let\oldfloor\floor
+\def\floor{\@ifstar{\olfloor}{\oldfloor*}}
+\makeatother
 % --- Spacing ---
 \newcommand{\sep}{\ensuremath{,\;}}
 
@@ -51,6 +62,7 @@
 \renewcommand{\theta}{\ensuremath{\vartheta}}
 \NewCommandCopy{\oldpsi}{\psi}
 \renewcommand{\psi}{\ensuremath{\oldpsi}}
+\renewcommand{\epsilon}{\ensuremath{\varepsilon}}
 
 % --- Operators ---
 \DeclareMathOperator{\id}{id}
@@ -61,9 +73,12 @@
 \newcommand{\gaussswitch}[1]{\ensuremath{\tau_{#1}}}
 \newcommand{\Bild}{\ensuremath{\mathrm{Bild} \ }}
 \newcommand{\Kern}{\ensuremath{\mathrm{Kern} \ }}
+\DeclareMathOperator{\Real}{Re}
+\DeclareMathOperator{\Image}{Im}
 \newcommand{\Rg}{\ensuremath{\mathrm{Rg} \ }}
 \newcommand{\Def}{\ensuremath{\mathrm{Def} \ }}
 \newcommand{\abb}[1]{\ensuremath{\mathrm{Abb}(#1)}}
+\newcommand*\conj[1]{\ensuremath{\overline{#1}}}
 % gcd to ggT if german
 % \let\gcd\relax
 % \DeclareMathOperator{\gcd}{ggT}%

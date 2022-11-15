@@ -52,6 +52,10 @@
 \newcommand{\exshDisplayDate}{yes}
 \DeclareOptionX{displaydate}{\renewcommand{\exshDisplayDate}{#1}}
 % ****(OPTION)****
+% sheetnumberprefix [yes|no] [DEFAULT: no] 
+\newcommand{\exshSheetNumberExPrefix}{no}
+\DeclareOptionX{sheetnumberprefix}{\renewcommand{\exshSheetNumberExPrefix}{yes}}
+% ****(OPTION)****
 % exercisename [DEFAULT: Exercise] 
 \newcommand{\Exercise}{Exercise}
 \DeclareOptionX{exercisename}{\renewcommand{\Exercise}{#1}}
@@ -273,7 +277,7 @@
 \setlength{\headheight}{\baselineskip}
 \setlength{\footheight}{\baselineskip}
 %\renewcommand{\thepage}{\arabic{page}}
-\ifoot*{\pagemark}
+\ofoot*{\pagemark}
 \setlength{\fboxrule}{0.4pt}
 \setlength{\fboxsep}{4pt}
 % load some common stuff at the \begin{document}
@@ -381,7 +385,11 @@
     \setcounter{subsubexercisenumber}{0}
     \setcounter{subsection}{0}
     \setcounter{subsubsection}{0}
-    \section*{\Exercise~\arabic{exercisenumber}}
+    \section*{%
+        \Exercise~%
+        \ifequals{\exshSheetNumberExPrefix}{yes}{\printsheet{}.}%
+        \arabic{exercisenumber}%
+    }
 }{%
     \ifdef{\points}{%
         \addPT{\arabic{exercisenumber}}{\points}
@@ -396,11 +404,11 @@
 }%
 % Subexercise with exercise nr. (indent optional)
 % ===================================================
-% \begin{subexercise}
+% \begin{subexercise}[step=0]
 % ===================================================
-\newenvironment{subexercise}{%
-    \stepcounter{subexercisenumber}
-    \stepcounter{subsection}
+\newenvironment{subexercise}[1][1]{%
+    \addtocounter{subexercisenumber}{#1}%
+    \addtocounter{subsection}{#1}%
     
     \ifnum\value{subexercisenumber}=1
     \else
@@ -489,7 +497,11 @@
         \xdef\totalpoints{\FPprint\result} % store value globally
         \addPT{\arabic{exercisenumber}}{\pointst}%
     }%
-    \section*{\Exercise~\arabic{exercisenumber}}%
+    \section*{%
+        \Exercise~%
+        \ifequals{\exshSheetNumberExPrefix}{yes}{\printsheet{}.}%
+        \arabic{exercisenumber}%
+    }
 }
 
 % Headline subtask (with linebreak)
