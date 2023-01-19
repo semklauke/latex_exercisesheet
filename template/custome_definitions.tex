@@ -41,6 +41,12 @@
 \let\oldfloor\floor
 \def\floor{\@ifstar{\olfloor}{\oldfloor*}}
 \makeatother
+% parentheses () / brackets
+\DeclarePairedDelimiter{\br}{(}{)}
+\makeatletter
+\let\oldbr\br
+\def\br{\@ifstar{\oldbr}{\oldbr*}}
+\makeatother
 % --- Spacing ---
 \newcommand{\sep}{\ensuremath{,\;}}
 
@@ -83,7 +89,42 @@
 % \let\gcd\relax
 % \DeclareMathOperator{\gcd}{ggT}%
 
-% ---  MATRIX and VECTORS ---
+% --- VECTORS ---
+% dynamic column-vector marco:
+% > \cvec{x_1}{x_2}{x_3}....
+\makeatletter
+\newcommand{\cvec}[1]{%
+    \begin{pmatrix}%
+        #1%
+        \@cvecCheckNext
+}%
+\newcommand{\@cvecCheckNext}{%
+\@ifnextchar\bgroup{\@cvecCosumeNext}{\end{pmatrix}}%
+}%
+\newcommand{\@cvecCosumeNext}[1]{%
+    \\ #1%
+    \@cvecCheckNext
+}%
+\makeatother
+
+% dynamic row-vector marco:
+% > \cvec{x_1}{x_2}{x_3}....
+\makeatletter
+\newcommand{\rvec}[1]{%
+    \begin{pmatrix}%
+        #1%
+        \@rvecCheckNext
+}%
+\newcommand{\@rvecCheckNext}{%
+\@ifnextchar\bgroup{\@rvecCosumeNext}{\end{pmatrix}}%
+}%
+\newcommand{\@rvecCosumeNext}[1]{%
+    & #1%
+    \@rvecCheckNext
+}%
+\makeatother%
+% Keept for backwards compability
+\newcommand{\vecII}[3]{\ensuremath{\begin{pmatrix}[c] #1 \\ #2 \end{pmatrix}}}
 \newcommand{\vecIII}[3]{\ensuremath{\begin{pmatrix}[c] #1 \\ #2 \\ #3 \end{pmatrix}}}
 \newcommand{\vecIIIT}[3]{\ensuremath{(#1 \  #2 \  #3)}}
 \newcommand{\matIV}[4]{\ensuremath{\begin{pmatrix}[cc] #1 & #2 \\ #3 & #4 \end{pmatrix}}}

@@ -6,3 +6,5 @@
 *.log
 *.out
 *.aux
+local_test
+example/example.pdf
