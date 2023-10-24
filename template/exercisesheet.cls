@@ -17,8 +17,11 @@
 \DeclareOptionX{10pt}{\PassOptionsToClass{10pt}{scrartcl}}
 \DeclareOptionX{11pt}{\PassOptionsToClass{11pt}{scrartcl}}
 % ****(OPTION)**** babel lang pass through
-% babellang
-\DeclareOptionX{babellang}{\PassOptionsToPackage{#1}{babel}}
+% lang
+\DeclareOptionX{lang}{%
+    \PassOptionsToPackage{#1}{babel}%
+    \PassOptionsToClass{#1}{scrartcl}%
+}
 % ****(OPTION)****
 % indent [DEFAULT: 0pt]
 \newcommand{\exshParidnent}{0pt}
@@ -102,8 +105,7 @@
 \RequirePackage[T1]{fontenc}
 \RequirePackage{lmodern}
 \RequirePackage[utf8]{inputenc}
-% !!! Add your language here !!! %
-\RequirePackage[english, ngerman]{babel}
+% Babel is loaded at the end of the file (see explentation there)
 %% --------------------------------------------------- %%
 %% -------------------- Packages --------------------- %%
 %% --------------------------------------------------- %%
@@ -142,6 +144,7 @@
 \RequirePackage{enumitem}
 \RequirePackage{xcolor}
 \RequirePackage{colortbl}
+\RequirePackage{csquotes}
 %% --------------------------------------------------- %%
 %% -------------------- Counters --------------------- %%
 %% --------------------------------------------------- %%
@@ -533,6 +536,12 @@
     }%
     \paragraph*{\alph{subexercisenumber})}%
 }
+
+
+%%%%% Later load packages so \PassOptionToPackage{} can reach them
+\RequirePackage{babel}
+
+
 %% --------------------------------------------------- %%
 %% --------------- Custome Definitions --------------- %%
 %% --------------------------------------------------- %%
