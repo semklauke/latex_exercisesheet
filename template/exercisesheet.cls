@@ -450,6 +450,7 @@
         \vspace{1em}
     \fi
     \paragraph{\roman{subsubexercisenumber})}
+    \makeatletter \global\@newlistfalse\makeatother
     \ifnotequals{\exshExerciseIndent}{none}{%
         \begin{adjustwidth}{\exshExerciseIndent}{0em}%
         \vspace{-\baselineskip}%
