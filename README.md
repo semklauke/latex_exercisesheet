@@ -49,6 +49,9 @@ But feel free to edit the class file to your like, I tried to comment everything
 ### Class Options
 The base class is `scrartcl`
 
+Language selection should be passed as a normal babel class option, e.g.
+`\documentclass[ngerman]{../template/exercisesheet}`.
+
 | Option              | Possible Values   | Default    | Description                                                                  |
 |:--------------------|:------------------|:-----------|:-----------------------------------------------------------------------------|
 | `10pt`              | -                 | -          | Pass 10pt font size to  `scrartcl`                                           |
@@ -66,5 +69,6 @@ The base class is `scrartcl`
 | `worksheetname`     | *strings*         | Worksheets | What your class calls a Worksheet (eg. Exercisesheet, other languages, etc.) |
 | `tutorialname`      | *strings*         | Tutorial   | What your class calls a Tutorial                                             |
 | `groupname`         | *strings*         | Group      | What your class calls a Group                                                |
+| `lang`              | *strings*         | -      | language option passed to bable|
 
 \- means this options has no values, just pass it 

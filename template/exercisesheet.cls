@@ -20,8 +20,8 @@
 % lang
 \DeclareOptionX{lang}{%
     \PassOptionsToPackage{#1}{babel}%
-    \PassOptionsToClass{#1}{scrartcl}%
 }
+\DeclareOptionX*{\expandafter\PassOptionsToClass\expandafter{\CurrentOption}{scrartcl}}
 % ****(OPTION)****
 % indent [DEFAULT: 0pt]
 \newcommand{\exshParidnent}{0pt}
@@ -258,18 +258,18 @@
     }
 }
 % End of Document - Add points for Table
+\makeatletter
 \AtEndDocument{
     \ifthenelse{\equal{\exshPointTable}{yes} \OR \equal{\exshExercisePoints}{yes}}{%
-        \makeatletter
         \immediate\write\@mainaux{\string\gdef\string\PTableASaved{\PTableA}}%
         \immediate\write\@mainaux{\string\gdef\string\PTableBSaved{\PTableB}}%
         %\immediate\write\@mainaux{\string\gdef\string\PTHeadSaved{\PTHead}}%
         \immediate\write\@mainaux{\string\gdef\string\PTHeadSaved{\arabic{exercisewithpoints}}}%
         \FPround\totalpoints\totalpoints{1}%
         \immediate\write\@mainaux{\string\gdef\string\totalpointsSaved{\FPprint{\totalpoints}}}%
-        \makeatother
     }{}%
 }
+\makeatother
 %% --------------------------------------------------- %%
 %% --------------------- Styling --------------------- %%
 %% --------------------------------------------------- %%
@@ -284,6 +284,7 @@
 \setlength{\fboxrule}{0.4pt}
 \setlength{\fboxsep}{4pt}
 % load some common stuff at the \begin{document}
+\makeatletter
 \AtBeginDocument[A]{%
     % if we have colortbl loaded we need to insert this hack, 
     % cause colortbl waits for some packages to load
@@ -300,9 +301,11 @@
         pdfsubject = {\printclass{} \printsemester{}}
     }%
 }
+\makeatother
 %% --------------------------------------------------- %%
 %% ------ Styling Header with different styles ------- %%
 %% --------------------------------------------------- %%
+\makeatletter
 \ifthenelse{\equal{\exshStyle}{underline}}{%
     %% ------------------------- %%
     %% ----- Undline Style ----- %%
@@ -316,9 +319,7 @@
             \ifnotequals{\printgroup}{?}{\Group{} \printgroup{} \\}%
             \ifnotequals{\printtutorial}{?}{\Tutorial{} \printtutorial{} \\}%
             \ifequals{\exshDisplayDate}{yes}{%
-              \makeatletter%
                 \@date \\%
-              \makeatother%
             }%
             \vspace*{-\baselineskip}
         \end{tabular}%
@@ -356,9 +357,7 @@
             }\ifnotequals{\printsemester}{?}{%
                 \printsemester{}\\%
             }\ifequals{\exshDisplayDate}{yes}{%
-              \makeatletter%
                 \@date%
-              \makeatother%
             }%
         \end{minipage}%
         \begin{minipage}[c][3.8cm][t]{0.50\textwidth}\vspace{0pt}%
@@ -373,6 +372,7 @@
         }%
     }}%
 }{}%
+\makeatother
 %% --------------------------------------------------- %%
 %% -------------- Exercise Environment --------------- %%
 %% --------------------------------------------------- %%
